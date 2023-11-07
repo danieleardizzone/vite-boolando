@@ -1,69 +1,10 @@
 <script>
+import ProductsJson from '../db.json';
+
 export default {
     data() {
         return {
-            products: [
-                {
-                    brandName: "Levi's",
-                    modelName: "RELAXED FIT TEE UNISEX",
-                    discountedPrice: "14,99",
-                    fullPrice: "29,99",
-                    discount: "-50%",
-                    sustainability: true,
-                    src: "1.webp",
-                    srcBis: "1b.webp",
-                },
-                {
-                    brandName: "Guess",
-                    modelName: "ROSES TEE",
-                    discountedPrice: "20,99",
-                    fullPrice: "29,99",
-                    discount: "-30%",
-                    sustainability: false,
-                    src: "2.webp",
-                    srcBis: "2b.webp",
-                },
-                {
-                    brandName: "Come Zucchero Filato",
-                    modelName: "VOGLIA DI COLORI PASTELLO",
-                    discountedPrice: "129,99",
-                    fullPrice: "184,99",
-                    discount: "-30%",
-                    sustainability: false,
-                    src: "3.webp",
-                    srcBis: "3b.webp",
-                },
-                {
-                    brandName: "Levi's",
-                    modelName: "TEE UNISEX",
-                    discountedPrice: "14,99",
-                    fullPrice: "29,99",
-                    discount: "-50%",
-                    sustainability: true,
-                    src: "4.webp",
-                    srcBis: "4b.webp",
-                },
-                {
-                    brandName: "Maya Deluxe",
-                    modelName: "STRIPE BODICE",
-                    discountedPrice: false,
-                    fullPrice: "99,99",
-                    discount: false,
-                    sustainability: false,
-                    src: "5.webp",
-                    srcBis: "5b.webp",
-                },
-                {
-                    brandName: "Esprit",
-                    modelName: "MAGLIONE - BLACK",
-                    discountedPrice: false,
-                    fullPrice: "14,99",
-                    discount: false,
-                    sustainability: true,
-                    src: "6.webp",
-                    srcBis: "6b.webp",
-                },
-            ]
+            products: ProductsJson.products
         }
     }
 }
@@ -76,27 +17,27 @@ export default {
                 <div class="col col-1" v-for="(product, index) in products" :key="index">
                     <div class="card">
                         <figure class="card-image">
-                            <img class="first" src="/img/1.webp">
-                            <img class="second" src="/img/1b.webp">
+                            <img class="first" :src="'/img/' + product.backImage">
+                            <img class="second" :src="'/img/' + product.frontImage">
                         </figure>
                         <div class="heart">&hearts;</div>
-                        <ul class="mini-cards">
-                            <li class="red-card" :class="product.discount !== false ? '' : 'd-none'">
-                                {{ product.discount }}
+                        <ul class="mini-cards" v-for="badge in product.badges">
+                            <li class="red-card" v-if="badge.type === 'discount'">
+                                {{ badge.value }}
                             </li>
-                            <li class="green-card" :class="product.sustainability !== false ? '' : 'd-none'">
+                            <li class="green-card" v-if="badge.type === 'tag'">
                                 Sostenibilità
                             </li>
                         </ul>
                     </div>
-                    <p class="brand-name">{{ product.brandName }}</p>
-                    <p class="model-name">{{ product.modelName }}</p>
+                    <p class="brand-name">{{ product.brand }}</p>
+                    <p class="model-name">{{ product.name }}</p>
                     <div class="price">
                         <span class="discounted-price" :class="product.discount !== false ? '' : 'd-none'">
-                            {{ product.discountedPrice }}&euro;
+                            {{ product.price }}&euro;
                         </span>
                         <span :class="product.discount !== false ? 'full-price' : 'discounted-price'">
-                            {{ product.fullPrice }}&euro;
+                            {{ product.price }}&euro;
                         </span>
                     </div>
                 </div>
@@ -106,7 +47,7 @@ export default {
 </template>
 
 <style scoped lang="scss">
-.main-content .col {
+.col {
     flex-basis: calc(100%/3);
     flex-direction: column;
     padding: 10px;
@@ -162,9 +103,7 @@ export default {
     position: absolute;
     bottom: 30px;
     left: 0;
-    display: flex;
-    flex-direction: row;
-    gap: 3px;
+
     color: white;
     font-size: 12px;
     font-weight: 700;
