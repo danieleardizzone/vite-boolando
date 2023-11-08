@@ -7,19 +7,35 @@
                 <div class="col footer_col-1">
                     <h3>Boolando s.r.l.</h3>
                     <ul class="information">
-                        <li>Informazioni legali</li>
-                        <li>Informativa sulla privacy</li>
-                        <li>Diritto di recesso</li>
+                        <li><a href="#">
+                                Informazioni legali
+                            </a></li>
+                        <li><a href="#">
+                                Informativa sulla privacy
+                            </a></li>
+                        <li><a href="#">
+                                Diritto di recesso
+                            </a></li>
                     </ul>
                 </div>
                 <div class="col footer_col-2">
                     <h3>trovaci anche su</h3>
                     <ul class="social">
-                        <li>T</li>
-                        <li>F</li>
-                        <li>I</li>
-                        <li>P</li>
-                        <li>Y</li>
+                        <li><a href="#">
+                                <font-awesome-icon icon="fa-brands fa-x-twitter" />
+                            </a></li>
+                        <li><a href="#">
+                                <font-awesome-icon icon="fa-brands fa-facebook" />
+                            </a></li>
+                        <li><a href="#">
+                                <font-awesome-icon icon="fa-brands fa-instagram" />
+                            </a></li>
+                        <li><a href="#">
+                                <font-awesome-icon icon="fa-brands fa-pinterest" />
+                            </a></li>
+                        <li><a href="#">
+                                <font-awesome-icon icon="fa-brands fa-youtube" />
+                            </a></li>
                     </ul>
                 </div>
             </div>

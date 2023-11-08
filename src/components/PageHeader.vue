@@ -18,9 +18,15 @@
                 </div>
                 <div class="col">
                     <ul class="icons">
-                        <li><a href="#">a</a></li>
-                        <li><a href="#">b</a></li>
-                        <li><a href="#">c</a></li>
+                        <li><a href="#">
+                                <font-awesome-icon icon="fa-regular fa-user" />
+                            </a></li>
+                        <li><a href="#">
+                                <font-awesome-icon icon="fa-regular fa-heart" />
+                            </a></li>
+                        <li><a href="#">
+                                <font-awesome-icon icon="fa-solid fa-cart-shopping" />
+                            </a></li>
                     </ul>
                 </div>
             </div>
