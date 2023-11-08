@@ -1,6 +1,6 @@
 <script>
 import Product from './Product.vue';
-import ProductsJson from '../db.json';
+import { store } from '../store.js'
 
 export default {
     components: {
@@ -8,7 +8,7 @@ export default {
     },
     data() {
         return {
-            products: ProductsJson.products
+            store
         }
     }
 }
@@ -18,7 +18,7 @@ export default {
     <main class="main-content">
         <div class="container">
             <div class="row">
-                <div class="col col-1" v-for="(product, index) in products" :key="index">
+                <div class="col col-1" v-for="(product, index) in store.products" :key="index">
                     <Product :product="product" />
                 </div>
             </div>
