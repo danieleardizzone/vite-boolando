@@ -32,7 +32,7 @@ export default {
                 </div>
             </div>
 
-            <div class="info-box">
+            <div class="info-box" @click="$emit('show', product)">
                 <font-awesome-icon class="info-icon" icon="fa-solid fa-info" />
             </div>
         </div>

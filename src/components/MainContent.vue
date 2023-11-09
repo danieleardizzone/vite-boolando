@@ -8,7 +8,17 @@ export default {
     },
     data() {
         return {
-            store
+            store,
+            selectedProduct: {},
+            open: false
+        }
+    }, methods: {
+        showModal(product) {
+            this.selectedProduct = product,
+                this.open = true
+        }, closeModal() {
+            this.open = false,
+                this.selectedProduct = {}
         }
     }
 }
@@ -19,8 +29,15 @@ export default {
         <div class="container">
             <div class="row">
                 <div class="col col-1" v-for="(product, index) in store.products" :key="index">
-                    <Product :product="product" />
+                    <Product @show="showModal" :product="product" />
                 </div>
+            </div>
+        </div>
+
+        <div v-if="open" class="modal">
+            <div class="card">
+                {{ selectedProduct.name }}
+                <font-awesome-icon @click="closeModal()" class="xmark" icon="fa-solid fa-xmark" />
             </div>
         </div>
     </main>
@@ -31,5 +48,32 @@ export default {
     flex-basis: calc(100%/3);
     flex-direction: column;
     padding: 10px;
+}
+
+.modal {
+    position: relative;
+    z-index: 100;
+
+    .card {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        background-color: white;
+        padding: 25px;
+        border-radius: 20px;
+
+
+    }
+
+    .xmark {
+        position: absolute;
+        top: 10px;
+        right: 7px;
+
+        cursor: pointer;
+    }
+
 }
 </style>
