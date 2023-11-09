@@ -30,15 +30,11 @@ export default {
                         {{ badge.value }}
                     </div>
                 </div>
-
             </div>
-            <!-- <li class="red-card" v-if="product.badges[0].type === true">
-                    {{ product.badges[0].value }}
-                </li>
-                <li class="green-card" v-if="product.badges[0].type === 'tag'">
-                    Sostenibilità
-                </li> -->
 
+            <div class="info-box">
+                <font-awesome-icon class="info-icon" icon="fa-solid fa-info" />
+            </div>
         </div>
 
         <p class="brand-name">{{ product.brand }}</p>
@@ -54,7 +50,7 @@ export default {
     </div>
 </template>
 
-<style>
+<style scoped lang="scss">
 .model-name {
     font-weight: 700;
 }
@@ -122,5 +118,18 @@ export default {
 
 .green-card {
     background-color: green;
+}
+
+.info-box {
+    position: absolute;
+    bottom: 96px;
+    right: 8px;
+    font-size: 28px;
+
+    cursor: pointer;
+
+    background-color: white;
+    padding: 8px;
+    border-radius: 10px;
 }
 </style>

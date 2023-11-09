@@ -18,8 +18,10 @@ import { faFacebook } from '@fortawesome/free-brands-svg-icons'
 import { faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { faPinterest } from '@fortawesome/free-brands-svg-icons'
 import { faYoutube } from '@fortawesome/free-brands-svg-icons'
+
+import { faInfo } from '@fortawesome/free-solid-svg-icons'
 /* add icons to the library */
-library.add(faUser, faHeart, faCartShopping, faXTwitter, faFacebook, faInstagram, faPinterest, faYoutube)
+library.add(faUser, faHeart, faCartShopping, faXTwitter, faFacebook, faInstagram, faPinterest, faYoutube, faInfo)
 
 createApp(App)
     .component('font-awesome-icon', FontAwesomeIcon)
