@@ -1,11 +1,14 @@
 <script>
+import { store } from '../store';
+
 export default {
     props: {
         product: {
             type: Object,
             required: true
         }
-    }
+    },
+
 }
 </script>
 
@@ -17,20 +20,31 @@ export default {
                 <img class="second" :src="'/img/' + product.frontImage">
             </figure>
             <div class="heart" :class="product.isInFavorites === true ? 'red-heart' : ''">&hearts;</div>
-            <ul class="mini-cards">
-                <li class="red-card" v-if="product.badges[0].type === true">
+
+            <div class="mini-cards">
+                <div v-for="(badge, index) in product.badges" :key="index">
+                    <div class="red-card" v-if="badge.type === 'discount'">
+                        {{ badge.value }}
+                    </div>
+                    <div class="green-card" v-else-if="badge.type === 'tag'">
+                        {{ badge.value }}
+                    </div>
+                </div>
+
+            </div>
+            <!-- <li class="red-card" v-if="product.badges[0].type === true">
                     {{ product.badges[0].value }}
                 </li>
                 <li class="green-card" v-if="product.badges[0].type === 'tag'">
                     Sostenibilità
-                </li>
-            </ul>
+                </li> -->
+
         </div>
 
         <p class="brand-name">{{ product.brand }}</p>
         <p class="model-name">{{ product.name }}</p>
         <div class="price">
-            <span class="discounted-price" :class="product.discount !== false ? '' : 'd-none'">
+            <span class="discounted-price">
                 {{ product.price }}&euro;
             </span>
             <span :class="product.discount !== false ? 'full-price' : 'discounted-price'">
@@ -97,6 +111,9 @@ export default {
     color: white;
     font-size: 12px;
     font-weight: 700;
+
+    display: flex;
+    flex-direction: row-reverse;
 }
 
 .red-card {
