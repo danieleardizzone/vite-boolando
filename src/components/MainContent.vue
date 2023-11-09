@@ -36,7 +36,15 @@ export default {
 
         <div v-if="open" class="modal">
             <div class="card">
-                {{ selectedProduct.name }}
+                <div class="card-img">
+                    <img :src="'/img/' + selectedProduct.frontImage">
+                    <img :src="'/img/' + selectedProduct.backImage" class="card-img__back">
+                </div>
+                <div class="card-txt">
+                    <h3>{{ selectedProduct.name }}</h3>
+                    <p>{{ selectedProduct.brand }}</p>
+                    <p>{{ selectedProduct.price }}</p>
+                </div>
                 <font-awesome-icon @click="closeModal()" class="xmark" icon="fa-solid fa-xmark" />
             </div>
         </div>
@@ -64,7 +72,32 @@ export default {
         padding: 25px;
         border-radius: 20px;
 
+        display: flex;
+        gap: 5px;
 
+        .card-img {
+            max-width: 60%;
+
+            position: relative;
+
+            .card-img__back {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+
+                opacity: 0;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+
+        .card-txt {
+            align-self: center;
+        }
     }
 
     .xmark {

@@ -16,8 +16,8 @@ export default {
     <div class="card">
         <div>
             <figure class="card-image">
-                <img class="first" :src="'/img/' + product.backImage">
-                <img class="second" :src="'/img/' + product.frontImage">
+                <img class="first" :src="'/img/' + product.frontImage">
+                <img class="second" :src="'/img/' + product.backImage">
             </figure>
             <div class="heart" :class="product.isInFavorites === true ? 'red-heart' : ''">&hearts;</div>
 
